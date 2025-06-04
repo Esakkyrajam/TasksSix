@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Aadhaar Card</title>
+    <style>
+      /* Global Body */
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+      }
+
+      /* Aadhaar Card Container */
+      .aadhaar-card {
+        width: 600px;
+        background-color: white;
+        border: 2px solid #000;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Top Bar */
+      .top-bar {
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+      }
+
+      .emblem {
+        width: 60px;
+        margin-right: 15px;
+      }
+
+      .gov-text {
+        line-height: 1.2;
+      }
+
+      .hindi {
+        font-size: 18px;
+        color: #ff9933;
+        margin: 0;
+        font-weight: bold;
+      }
+
+      .english {
+        font-size: 16px;
+        color: #138808;
+        margin: 0;
+      }
+
+      /* Main Content */
+      .content {
+        display: flex;
+        gap: 20px; /* space between left and right */
+        align-items: center; /* vertically center items */
+        padding: 10px 0;
+      }
+
+      .left {
+        flex: 1; /* user photo column */
+      }
+
+      .left .photo {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid #000;
+      }
+
+      .right {
+        flex: 2; /* text and QR code */
+        display: flex;
+        justify-content: space-between; /* space between text and QR */
+        align-items: center;
+      }
+
+      .right > div {
+        max-width: 60%; /* container for text */
+      }
+
+      .right .telugu {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .right img.qr {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+      }
+
+      /* Aadhaar Number */
+      .aadhaar-number {
+        text-align: center;
+        font-size: 22px;
+        letter-spacing: 3px;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 16px;
+      }
+
+      .aadhaar-logo-text {
+        color: red;
+        font-weight: bold;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="aadhaar-card">
+      <!-- Top Bar with Emblem and Text -->
+      <div class="top-bar">
+        <img
+          src="https://th.bing.com/th/id/OIP.4QE8KPl1dZ3_BoR3X92aqgHaIH?rs=1&pid=ImgDetMain"
+          class="emblem"
+          alt="Emblem"
+        />
+        <div class="gov-text">
+          <p class="hindi">भारत सरकार</p>
+          <p class="english">Government of India</p>
+        </div>
+      </div>
+
+      <!-- Content Section -->
+      <div class="content">
+        <div class="left">
+          <img
+            src="https://img.freepik.com/premium-photo/athletic-indian-young-man-workout-jacket_856987-1678.jpg"
+            class="photo"
+            alt="User Photo"
+          />
+        </div>
+        <div class="right">
+          <div>
+            <p class="telugu">ఇసక్కి రాజా ము</p>
+            <p><strong>Name:</strong> XXXX</p>
+            <p><strong>DOB:</strong> XX-XX-XXXX</p>
+            <p><strong>Gender:</strong> MALE</p>
+          </div>
+          <img
+            src="https://www.dummies.com/wp-content/uploads/324172.image0.jpg"
+            class="qr"
+            alt="QR Code"
+          />
+        </div>
+      </div>
+
+      <!-- Aadhaar Number -->
+      <div class="aadhaar-number">0000 1111 2222</div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <span class="aadhaar-logo-text">आधार</span> - आम आदमी का अधिकार
+      </div>
+    </div>
+  </body>
+</html>
