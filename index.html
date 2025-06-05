@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h2 {
+        color: orangered;
+      }
+      /* Aadhaar Card Container */
+      .aadhaar-card {
+        max-width: 500px;
+        margin: auto;
+        background-color: white;
+        border: 2px solid #000;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Top Bar */
+      .top-bar {
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+      }
+
+      .emblem {
+        width: 60px;
+        margin-right: 15px;
+      }
+
+      .gov-text {
+        line-height: 1.2;
+      }
+
+      .hindi {
+        font-size: 18px;
+        color: #ff9933;
+        margin: 0;
+        font-weight: bold;
+      }
+
+      .english {
+        font-size: 16px;
+        color: #138808;
+        margin: 0;
+      }
+
+      /* Main Content */
+      .content {
+        display: flex;
+        gap: 20px; /* space between left and right */
+        align-items: center; /* vertically center items */
+        padding: 10px 0;
+      }
+
+      .left {
+        flex: 1; /* user photo column */
+      }
+
+      pre {
+        max-width: 500px;
+        margin: auto;
+        background-color: #f4f4f4;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        border: 1px solid #ccc;
+      }
+
+      .left .photo {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid #000;
+      }
+
+      .right {
+        flex: 2; /* text and QR code */
+        display: flex;
+        justify-content: space-between; /* space between text and QR */
+        align-items: center;
+      }
+
+      .right > div {
+        max-width: 60%; /* container for text */
+      }
+
+      .right .telugu {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .right img.qr {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+      }
+
+      /* Aadhaar Number */
+      .aadhaar-number {
+        text-align: center;
+        font-size: 22px;
+        letter-spacing: 3px;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 16px;
+      }
+
+      .aadhaar-logo-text {
+        color: red;
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 500px;
+        margin: auto;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="number"],
+      input[type="date"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      input[type="color"],
+      input[type="range"] {
+        margin-top: 10px;
+        vertical-align: middle;
+      }
+      .checkbox-group,
+      .radio-group {
+        margin-top: 10px;
+      }
+      .checkbox-group label,
+      .radio-group label {
+        font-weight: normal;
+        margin-right: 15px;
+      }
+      input[type="submit"] {
+        margin-top: 25px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      .points {
+        max-width: 500px;
+        margin: auto;
+        background-color: white;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .highlights {
+        max-width: 500px;
+        margin: auto;
+        background-color: white;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .open-in-new-tab {
+        max-width: 500px;
+        margin: auto;
+        background-color: white;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .radio-btn-example {
+        max-width: 500px;
+        margin: auto;
+        background-color: white;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      table {
+        width: 60%;
+        margin: 30px auto;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+      }
+      th,
+      td {
+        border: 1px solid #555;
+        padding: 8px 12px;
+        text-align: center;
+      }
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .pass {
+        color: green;
+        font-weight: bold;
+      }
+      .fail {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Question-01 -->
+      <h2>Question-01</h2>
+      <h3>Before the bug</h3>
+      <pre>
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;title&gt;Document
+            &lt;body&gt;
+                guvi
+        &lt;/title&gt;
+    &lt;/head&gt;
+    &lt;div&gt;
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        &lt;div&gt;
+            &lt;div&gt;
+                Guvi Geek Network
+            &lt;/div&gt;
+        &lt;/body&gt;
+&lt;/html&gt;
+  </pre
+      >
+      <h3>After the bug fixed</h3>
+      <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    guvi
+    &lt;div&gt;
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      &lt;div&gt;
+        &lt;div&gt;Guvi Geek Network&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </pre
+      >
+
+      <!-- Question-02 -->
+
+      <h2>Question-02</h2>
+      <h3>Before the bug</h3>
+
+      <pre>
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;title&gt;Document
+            &lt;body&gt;
+                guvi
+    &lt;/head&gt;
+    &lt;div&gt;
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        &lt;div&gt;
+            &lt;div&gt;
+                Guvi Geek Network
+            &lt;/div&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+    </pre
+      >
+
+      <h3>After the bug fixed</h3>
+
+      <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    guvi
+    &lt;div&gt;
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      &lt;div&gt;
+        &lt;div&gt;Guvi Geek Network&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+
+      <!-- Question-03 -->
+      <h2>Question-03</h2>
+      <form action="/submit" method="post">
+        <h2>Contact Us</h2>
+        <label for="name">Full Name:</label><br />
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="email">Email Address:</label><br />
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <label for="phone">Phone Number:</label><br />
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          pattern="[0-9]{10}"
+          required
+        /><br /><br />
+
+        <label for="subject">Subject:</label><br />
+        <input type="text" id="subject" name="subject" required /><br /><br />
+
+        <label for="message">Message:</label><br />
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          cols="30"
+          required
+        ></textarea
+        ><br /><br />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- Question-04 -->
+      <h2>Question-04</h2>
+      <div class="points">
+        <h1>Programming Language</h1>
+        <ul>
+          <li>JavaScript</li>
+          <li>Angular</li>
+          <li>React</li>
+          <li>Vue.js</li>
+          <li>Python</li>
+          <ul>
+            <li>Django Framework</li>
+            <li>Flask Framework</li>
+          </ul>
+          <li>Java</li>
+          <ul>
+            <li>Spring</li>
+            <li>Maven</li>
+            <li>Hibernate</li>
+          </ul>
+        </ul>
+
+        <h1>Database</h1>
+        <ul>
+          <li>MySQL</li>
+          <li>MongoDB</li>
+          <li>Cassandra</li>
+        </ul>
+      </div>
+
+      <!-- Question-05 -->
+      <h2>Question-05</h2>
+      <div class="open-in-new-tab">
+        <h1>Visit Google</h1>
+        <p>Click the link below to open Google in a new tab:</p>
+        <a href="https://google.com" target="_blank">Open Google in New Tab</a>
+      </div>
+
+      <!-- Question-06 -->
+      <h2>Question-06</h2>
+      <div class="radio-btn-example">
+        <h2>Radio btn Example</h2>
+        <form action="/submit" method="post">
+          <label for="name">Full Name:</label><br />
+          <input type="text" id="name" name="name" required /><br /><br />
+
+          <label for="email">Email Address:</label><br />
+          <input type="email" id="email" name="email" required /><br /><br />
+
+          <label for="phone">Phone Number:</label><br />
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            pattern="[0-9]{10}"
+            required
+          /><br /><br />
+
+          <label for="subject">Subject:</label><br />
+          <input type="text" id="subject" name="subject" required /><br /><br />
+
+          <label>Employee Type:</label><br />
+          <input
+            type="radio"
+            id="salaried"
+            name="employeeType"
+            value="Salaried"
+            required
+          />
+          <label for="salaried">Salaried</label><br />
+
+          <input
+            type="radio"
+            id="business"
+            name="employeeType"
+            value="Own Business"
+            required
+          />
+          <label for="business">Own Business</label><br /><br />
+
+          <label for="message">Message:</label><br />
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            cols="30"
+            required
+          ></textarea
+          ><br /><br />
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Question-07 -->
+      <h2>Question-07</h2>
+      <div class="aadhaar-card">
+        <!-- Top Bar with Emblem and Text -->
+        <div class="top-bar">
+          <img
+            src="https://th.bing.com/th/id/OIP.4QE8KPl1dZ3_BoR3X92aqgHaIH?rs=1&pid=ImgDetMain"
+            class="emblem"
+            alt="Emblem"
+          />
+          <div class="gov-text">
+            <p class="hindi">भारत सरकार</p>
+            <p class="english">Government of India</p>
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content">
+          <div class="left">
+            <img
+              src="https://img.freepik.com/premium-photo/athletic-indian-young-man-workout-jacket_856987-1678.jpg"
+              class="photo"
+              alt="User Photo"
+            />
+          </div>
+          <div class="right">
+            <div>
+              <p><strong>Name:</strong> XXXX</p>
+              <p><strong>DOB:</strong> XX-XX-XXXX</p>
+              <p><strong>Gender:</strong> MALE</p>
+            </div>
+            <img
+              src="https://www.dummies.com/wp-content/uploads/324172.image0.jpg"
+              class="qr"
+              alt="QR Code"
+            />
+          </div>
+        </div>
+
+        <!-- Aadhaar Number -->
+        <div class="aadhaar-number">0000 1111 2222</div>
+
+        <!-- Footer -->
+        <div class="footer">
+          <span class="aadhaar-logo-text">आधार</span> - आम आदमी का अधिकार
+        </div>
+      </div>
+      <!-- Question-08 -->
+      <h2>Question-08</h2>
+
+      <div class="table-example">
+        <h2 style="text-align: center">Student Exam Results</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Roll No</th>
+              <th>Name</th>
+              <th>Marks in %</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Arun Kumar</td>
+              <td>78</td>
+              <td class="pass">Pass</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Bhavana</td>
+              <td>45</td>
+              <td class="fail">Fail</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Chitra</td>
+              <td>89</td>
+              <td class="pass">Pass</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Dinesh</td>
+              <td>33</td>
+              <td class="fail">Fail</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Elena</td>
+              <td>66</td>
+              <td class="pass">Pass</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Farhan</td>
+              <td>74</td>
+              <td class="pass">Pass</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Gita</td>
+              <td>55</td>
+              <td class="pass">Pass</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Harish</td>
+              <td>42</td>
+              <td class="fail">Fail</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Isha</td>
+              <td>69</td>
+              <td class="pass">Pass</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Jaya</td>
+              <td>80</td>
+              <td class="pass">Pass</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Question-09 -->
+      <h2>Question-09</h2>
+      <form>
+        <h2>User Information Form</h2>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="Esakky Raja M" />
+
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value="qweafdbck46"
+        />
+
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value="esakky@example.com"
+        />
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" value="25" min="1" max="120" />
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" value="2000-01-01" />
+
+        <div class="checkbox-group">
+          <label
+            ><input type="checkbox" name="subscribe" checked /> Subscribe to our
+            channel</label
+          >
+        </div>
+
+        <div class="radio-group">
+          <p>Gender:</p>
+          <label
+            ><input type="radio" name="gender" value="male" checked />
+            Male</label
+          >
+          <label
+            ><input type="radio" name="gender" value="female" /> Female</label
+          >
+          <label
+            ><input type="radio" name="gender" value="other" /> Other</label
+          >
+        </div>
+
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" rows="4">
+This is default comment text.</textarea
+        >
+
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+          <option value="us" selected>United States</option>
+          <option value="in">India</option>
+          <option value="uk">United Kingdom</option>
+          <option value="au">Australia</option>
+        </select>
+
+        <label for="favcolor">Favorite Color:</label>
+        <input type="color" id="favcolor" name="favcolor" value="#ff0000" />
+
+        <label for="volume">Volume:</label>
+        <input
+          type="range"
+          id="volume"
+          name="volume"
+          min="0"
+          max="100"
+          value="75"
+        />
+
+        <input type="submit" value="Submit" />
+      </form>
+      <!-- Question-10 -->
+      <h2>Question-10</h2>
+      <div class="highlights">
+        <p><mark>HTML &amp; CSS is awesome</mark></p>
+      </div>
+
+      <!-- Question-11 -->
+      <h2>Question-11</h2>
+      <form>
+        <h2>Form with All Input Types</h2>
+
+        <label for="text">Text:</label>
+        <input type="text" id="text" name="text" value="Sample Text" />
+
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value="mypassword"
+        />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="user@example.com" />
+
+        <label for="number">Number:</label>
+        <input
+          type="number"
+          id="number"
+          name="number"
+          value="42"
+          min="1"
+          max="100"
+        />
+
+        <label for="tel">Telephone:</label>
+        <input type="tel" id="tel" name="tel" value="+1234567890" />
+
+        <label for="url">URL:</label>
+        <input type="url" id="url" name="url" value="https://example.com" />
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" value="2025-06-04" />
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" value="13:30" />
+
+        <label for="datetime-local">Date & Time:</label>
+        <input
+          type="datetime-local"
+          id="datetime-local"
+          name="datetime-local"
+          value="2025-06-04T13:30"
+        />
+
+        <label for="color">Color:</label>
+        <input type="color" id="color" name="color" value="#ff6600" />
+
+        <label for="range">Range (slider):</label>
+        <input
+          type="range"
+          id="range"
+          name="range"
+          min="0"
+          max="100"
+          value="50"
+        />
+
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search" value="Search term" />
+
+        <label for="file">File Upload:</label>
+        <input type="file" id="file" name="file" />
+
+        <div class="checkbox-group">
+          <p>Checkboxes:</p>
+          <label
+            ><input type="checkbox" name="check1" checked /> Option 1</label
+          >
+          <label><input type="checkbox" name="check2" /> Option 2</label>
+          <label><input type="checkbox" name="check3" /> Option 3</label>
+        </div>
+
+        <div class="radio-group">
+          <p>Radio Buttons:</p>
+          <label
+            ><input type="radio" name="radioGroup" value="a" checked /> A</label
+          >
+          <label><input type="radio" name="radioGroup" value="b" /> B</label>
+          <label><input type="radio" name="radioGroup" value="c" /> C</label>
+        </div>
+
+        <label for="textarea">Textarea:</label>
+        <textarea id="textarea" name="textarea" rows="4">
+Default text inside textarea.</textarea
+        >
+
+        <label for="select">Select Dropdown:</label>
+        <select id="select" name="select">
+          <option value="option1" selected>Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+
+        <input type="submit" value="Submit Form" />
+      </form>
+    </div>
+  </body>
+</html>
